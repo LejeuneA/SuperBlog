@@ -1,32 +1,41 @@
 <?php
-    require_once('settings.php');
+require_once('settings.php');
 
-    $res = getAllArticlesDB($conn);
+$res = getAllArticlesDB($conn);
 
-    // DEBUG // Affichage brut des articles reçu de la DB // 
-    // disp_ar($res, 'ARTICLES');
+// DEBUG // Affichage brut des articles reçu de la DB // 
+// disp_ar($res, 'ARTICLES');
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php displayHeadSection('Accueil'); ?>
 </head>
+
 <body>
     <div class="container">
-            <div id="header-logo">
-                <h1><?php echo APP_NAME; ?></h1>
+        <div id="header-logo">
+            <h1><a href="index.php" title="Aller sur la page d'accueil du Blog"> <?php echo APP_NAME; ?></a></h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div id="main-menu">
+                    <?php displayNavigation(); ?>
+                </div>
             </div>
-            <div id="main-menu">
-                <?php displayNavigation(); ?>
-            </div>
+        </div>
+        <div class="container">
             <div id="content">
                 <?php echo displayArticlesPublies(); ?>
-            </div>  
-            <footer>                
-                <?php echo displayFooterSection(); ?>
-            </footer>     
+            </div>
         </div>
-    </div>    
+
+        <footer>
+            <?php echo displayFooterSection(); ?>
+        </footer>
+
 </body>
+
 </html>
