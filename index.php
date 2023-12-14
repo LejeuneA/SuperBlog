@@ -1,7 +1,9 @@
 <?php
 require_once('settings.php');
 
+
 $res = getAllArticlesDB($conn);
+
 
 // DEBUG // Affichage brut des articles reçu de la DB // 
 // disp_ar($res, 'ARTICLES');
@@ -19,22 +21,19 @@ $res = getAllArticlesDB($conn);
         <div id="header-logo">
             <h1><a href="index.php" title="Aller sur la page d'accueil du Blog"> <?php echo APP_NAME; ?></a></h1>
         </div>
-        <div class="container">
-            <div class="row">
-                <div id="main-menu">
-                    <?php displayNavigation(); ?>
-                </div>
-            </div>
+    </div>
+    <div id="main-menu">
+            <?php displayNavigation(); ?>
         </div>
-        <div class="container">
-            <div id="content">
-                <?php echo displayArticlesPublies(); ?>
-            </div>
+    <div class="container">
+        <div id="content">
+            <?php echo displayArticlesPublies(); ?>
         </div>
+    </div>
 
-        <footer>
-            <?php echo displayFooterSection(); ?>
-        </footer>
+    <footer>
+        <?php echo displayFooterSection(); ?>
+    </footer>
 
 </body>
 
