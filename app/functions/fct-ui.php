@@ -79,7 +79,7 @@ function displayArticlesPublies()
 function displayFooterSection()
 {
     $footer = '
-        <p>Superblog - v0.0.1 - 14-12-2023 16:15 by Açelya Lejeune<p>
+        <p>SuperBlog - v0.0.1 - 14-12-2023 16:15 by Açelya Lejeune<p>
     ';
 
     echo $footer;
