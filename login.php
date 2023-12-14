@@ -20,16 +20,16 @@ require_once('settings.php');
             <h1><a href="index.php" title="Aller sur la page d'accueil du Blog"> <?php echo APP_NAME; ?></a></h1>
         </div>
     </div>
-        <div class="container">
-            <div id="main-menu">
-                <?php displayNavigation(); ?>
-            </div>
-            <h1>S'identifier</h1>
-            <div id="message">
-                <!-- Ici nous affichons les messages éventuels (CODE PHP)-->
-            </div>
-            <div id="content">
-                <!-- 
+    <div class="container">
+        <div id="main-menu">
+            <?php displayNavigation(); ?>
+        </div>
+        <h1>S'identifier</h1>
+        <div id="message">
+            <!-- Ici nous affichons les messages éventuels (CODE PHP)-->
+        </div>
+        <div id="content">
+            <!-- 
                     Créez ici un formulaire HTML s'identifier sur l'application
                     * Astuces :
                         - L'attribut "action" de votre balise form devra contenir "login.php"
@@ -37,11 +37,11 @@ require_once('settings.php');
                         - L'attribut "method" devra contenir "post"                    
                 -->
 
-            </div>
-            <footer>
-                <?php echo displayFooterSection(); ?>
-            </footer>
         </div>
+        <footer>
+            <?php echo displayFooterSection(); ?>
+        </footer>
+    </div>
 </body>
 
 </html>
