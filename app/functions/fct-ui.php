@@ -6,7 +6,8 @@
  * 
  * @return void 
  */
-function displayNavigation(){
+function displayNavigation()
+{
     $navigation = '
     <nav>
         <ul class="menu">
@@ -27,7 +28,8 @@ function displayNavigation(){
  * @param string $title 
  * @return void 
  */
-function displayHeadSection($title = ''){
+function displayHeadSection($title = '')
+{
 
     $head = '
         <meta charset="UTF-8">
@@ -43,3 +45,42 @@ function displayHeadSection($title = ''){
     echo $head;
 }
 
+
+
+/**
+ * 
+ * Affichage des articles publiés.
+ * 
+ * 
+ */
+function displayArticlesPublies()
+{
+
+    $articlesPublies = '
+        <p><a href="article.php?id=xx" class="titre-article">Titre du premier article</a></p>
+        <p><a href="article.php?id=xx" class="titre-article">Titre du second article</a></p>
+        <p><a href="article.php?id=xx" class="titre-article">Titre du troisième article</a></p>
+    
+';
+
+    echo $articlesPublies;
+}
+
+
+
+
+/**
+ * 
+ * Affichage du footer de page
+ * 
+ * @param string $footer
+ */
+
+function displayFooterSection()
+{
+    $footer = '
+        <p>Superblog - v0.0.1 - 14-12-2023 16:15 by Açelya Lejeune<p>
+    ';
+
+    echo $footer;
+}
