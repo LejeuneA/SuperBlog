@@ -2,7 +2,7 @@
 require_once('settings.php');
 
 
-$res = getAllArticlesDB($conn);
+$res = getAllArticlesDB($conn, '1');
 
 
 // DEBUG // Affichage brut des articles reçu de la DB // 
@@ -27,7 +27,14 @@ $res = getAllArticlesDB($conn);
         </div>
     <div class="container">
         <div id="content">
-            <?php echo getAllArticlesDB($conn, $active = '1'); ?>
+            <ul>
+                <?php
+                // Display each active article
+                foreach ($res as $article) {
+                    echo "<h2><li><a href='article.php?id={$article['id']}'>{$article['title']}</a></li></h2><hr>";
+                }
+                ?>
+            </ul>
         </div>
     </div>
 
