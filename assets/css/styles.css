@@ -93,11 +93,15 @@ h1{
 
  #content{
     display: block;
-    line-height: 2rem;
  }
 
  #content ul {
     list-style: none;
+ }
+
+ #content ul li {
+    border-bottom: 1px solid rgb(136, 185, 235);
+    padding: 2rem;
  }
 
  #content h2, #content a {
@@ -111,7 +115,4 @@ h1{
     color:rgb(136, 185, 235);
  }
 
-hr{
-    border: 1px solid rgb(136, 185, 235);
-
-}
+ 
