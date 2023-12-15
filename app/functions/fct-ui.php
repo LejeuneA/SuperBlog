@@ -54,18 +54,17 @@ function displayHeadSection($title = '')
  * 
  * 
  */
-function displayArticlesPublies()
-{
+function displayArticlesPublies($res) {
 
-    $articlesPublies = '
-        <p><a href="article.php?id=xx" class="titre-article">Titre du premier article</a></p>
-        <p><a href="article.php?id=xx" class="titre-article">Titre du second article</a></p>
-        <p><a href="article.php?id=xx" class="titre-article">Titre du troisième article</a></p>
-    
-';
+    echo "<ul>";
 
-    echo $articlesPublies;
+    foreach ($res as $article) {
+        echo "<li><a href='article.php?id={$article['id']}' title='Lire'>{$article['title']}</a></li>";
+    }
+
+    echo "</ul>";
 }
+
 
 
 
