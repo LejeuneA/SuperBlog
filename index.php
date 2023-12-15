@@ -27,7 +27,7 @@ $res = getAllArticlesDB($conn);
         </div>
     <div class="container">
         <div id="content">
-            <?php echo displayArticlesPublies(); ?>
+            <?php echo getAllArticlesDB($conn, $active = '1'); ?>
         </div>
     </div>
 
