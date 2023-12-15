@@ -25,16 +25,11 @@ $res = getAllArticlesDB($conn, '1');
     <div id="main-menu">
             <?php displayNavigation(); ?>
         </div>
+
     <div class="container">
         <div id="content">
-            <ul>
-                <?php
-                // Display each active article
-                foreach ($res as $article) {
-                    echo "<h2><li><a href='article.php?id={$article['id']}'>{$article['title']}</a></li></h2><hr>";
-                }
-                ?>
-            </ul>
+        <!-- Display each active article -->
+            <?php displayArticlesPublies($res); ?>
         </div>
     </div>
 
