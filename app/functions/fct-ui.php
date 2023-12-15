@@ -1,6 +1,7 @@
 <?php
 // Fonctions qui sont liées à l'interface utilisateur
 
+
 /**
  * Affichage de la navigation
  * 
