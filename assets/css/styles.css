@@ -5,6 +5,13 @@
     --menu-item: rgb(15, 125, 235);
     --menu-item-hover: rgb(40, 118, 196);
     --h1-title-app : rgb(6, 136, 223);
+    --danger-color: rgb(217, 12, 12);
+    --backg-msg-danger-color: rgb(255, 208, 208);
+    --success-color: rgb(39, 156, 18);
+    --backg-msg-success-color: rgb(222, 254, 180);
+    --danger-color-hover: rgb(147, 13, 13);
+    --link-color: rgb(1, 125, 248);
+    --published-color: rgb(74, 192, 41);
 }
 
 a:-webkit-any-link {
