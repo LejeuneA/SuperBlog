@@ -38,6 +38,10 @@ h1 {
     font-weight: 900;
 }
 
+#message h2 {
+    color: rgb(15, 125, 235);
+}
+
 .container {
     margin: 1rem;
 }
