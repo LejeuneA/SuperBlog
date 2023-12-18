@@ -16,8 +16,8 @@ require_once('settings.php');
 <body>
 
     <div class="container">
-        <div id="header-logo">
-            <h1><a href="index.php" title="Aller sur la page d'accueil du Blog"> <?php echo APP_NAME; ?></a></h1>
+        <div class="container">
+            <?php echo displayHeaderLogo(); ?>
         </div>
     </div>
     <div class="container">
