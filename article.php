@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
         <?php echo displayHeaderLogo(); ?>
     </div>
     <div id="main-menu">
-        <?php displayNavigation('Articles'); ?>
+        <?php displayNavigation(); ?>
     </div>
 
     <div id="message">
