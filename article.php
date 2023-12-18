@@ -18,11 +18,11 @@ if (isset($_GET['id'])) {
         $pageTitle = $article['title'];
     } else {
         // If the article does not exist, set a default title
-        $pageTitle = 'Article Not Found';
+        $pageTitle = 'L\'article n\'est pas trouvé';
     }
 } else {
     // If 'id' parameter is not set, set a default title
-    $pageTitle = 'Article Not Found';
+    $pageTitle = 'L\'article n\'est pas trouvé';
 }
 ?>
 
@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
                 echo "<p>{$article['content']}</p>";
             } else {
                 // Display a message if the article does not exist
-                echo "<p>Article not found.</p>";
+                echo "<p>Il n'y a pas d'article à afficher.</p>";
             }
             ?>
 
