@@ -55,21 +55,36 @@ function displayFormRadioBtnArticlePublished($published, $typeForm = 'ADD')
  * 
  * @return void 
  */
-function displayNavigation()
-{
-    $navigation = '
-    <nav>
-        <ul class="menu">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="manager.php">Gérer</a></li>
-            <li><a href="add.php">Ajouter</a></li>
-            <li><a href="login.php">Se connecter</a></li>
-                        
-        </ul>
-    <nav>';
+function displayNavigation(){
+
+    $navigation = '';
+
+    if($_SESSION['IDENTIFY']){
+        $navigation .= '
+        <nav>
+            <ul class="menu">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="manager.php">Gérer</a></li>
+                <li><a href="add.php">Ajouter</a></li>
+                <li><a href="logoff.php" class="btn-danger">Déconnexion</a></li>                        
+            </ul>
+            <div class="welcome"> Bienvenue <span>'.$_SESSION['user_email'].'</span></div>
+        <nav>';
+    }else{
+        $navigation .= '
+        <nav>
+            <ul class="menu">
+                <li><a href="index.php">Home</a></li>
+                <!--<li><a href="manager.php">Gérer</a></li>
+                <li><a href="add.php">Ajouter</a></li>-->
+                <li><a href="login.php">Se connecter</a></li>                        
+            </ul>
+        <nav>';
+    }
 
     echo $navigation;
 }
+
 
 /**
  * Affichage de la section head d'une page
