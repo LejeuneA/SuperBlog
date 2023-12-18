@@ -3,7 +3,7 @@
     const APP_NAME = "SuperBlog";
     const APP_VERSION = 'v0.1.4';
     const APP_UPDATED = '18-12-2023 16:47';
-    const APP_AUTHOR = 'Acelya Lejeune';
+    const APP_AUTHOR = 'Açelya Lejeune';
 
     // Ouverture de la session et initialisation de la variable $_SESSION['IDENTIFY']
     session_name(APP_NAME);
