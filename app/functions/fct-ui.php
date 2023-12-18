@@ -109,7 +109,17 @@ function displayHeadSection($title = '')
     echo $head;
 }
 
-
+/**
+ * 
+ * Affichage des articles publiés.
+ * 
+ * 
+ */
+function displayHeaderLogo() {
+    echo '<div id="header-logo">
+            <h1><a href="index.php" title="Aller sur la page d\'accueil du Blog">' . APP_NAME . '</a></h1>
+          </div>';
+}
 
 /**
  * 
