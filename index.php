@@ -18,17 +18,15 @@ $res = getAllArticlesDB($conn, 1);
 
 <body>
     <div class="container">
-        <div id="header-logo">
-            <h1><a href="index.php" title="Aller sur la page d'accueil du Blog"> <?php echo APP_NAME; ?></a></h1>
-        </div>
+        <?php echo displayHeaderLogo(); ?>
     </div>
     <div id="main-menu">
-            <?php displayNavigation(); ?>
-        </div>
+        <?php displayNavigation(); ?>
+    </div>
 
     <div class="container">
         <div id="content">
-        <!-- Display each active article -->
+            <!-- Display each active article -->
             <?php displayArticlesPublies($res); ?>
         </div>
     </div>
