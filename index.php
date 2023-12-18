@@ -2,7 +2,7 @@
 require_once('settings.php');
 
 
-$res = getAllArticlesDB($conn, '1');
+$res = getAllArticlesDB($conn, 1);
 
 
 // DEBUG // Affichage brut des articles reçu de la DB // 
