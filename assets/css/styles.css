@@ -33,12 +33,12 @@ footer{
     text-align: center;
     font-size: 0.8em;
 }
-h1{
+h1 {
     color: var(--h1-title-app);
     font-weight: 900;
 }
 
-.container{
+.container {
     margin: 1rem;
 }
 
