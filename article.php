@@ -45,10 +45,6 @@ if (isset($_GET['id'])) {
         </div>
 
         <div id="message">
-            <!-- Ici nous affichons les messages éventuels (CODE PHP) -->
-        </div>
-        <div id="content">
-
             <?php
             // Check if the article exists
             if ($article) {
@@ -60,7 +56,9 @@ if (isset($_GET['id'])) {
                 echo "<p>Il n'y a pas d'article à afficher.</p>";
             }
             ?>
-
+        </div>
+        <div id="content">
+            <?php echo getArticleByIDDB($conn, $id); ?>
         </div>
         <footer>
             <?php echo displayFooterSection(); ?>
