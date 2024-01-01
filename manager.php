@@ -55,8 +55,7 @@ if (!is_object($conn)) {
                 foreach ($result as $article) {
             ?>
                     <div class="article">
-                        <h3><?= htmlspecialchars($article['title']); ?></h3>
-                        <p><?= htmlspecialchars($article['content']); ?></p>
+                        <h3><?= htmlspecialchars_decode($article['title']); ?></h3>
                         <button onclick="modifierArticle(<?= $article['id']; ?>)">Modifier</button>
                         <button onclick="afficherArticle(<?= $article['id']; ?>)">Afficher</button>
                         <button onclick="supprimerArticle(<?= $article['id']; ?>)">Supprimer</button>
