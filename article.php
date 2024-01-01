@@ -36,7 +36,7 @@
 <body>
     <div class="container">
         <div id="header-logo">
-            <h1><?php echo APP_NAME; ?></h1>
+        <h1><a href="index.php"><?php echo APP_NAME; ?></a></h1>
         </div>
         <div id="main-menu">
             <?php displayNavigation(); ?>
