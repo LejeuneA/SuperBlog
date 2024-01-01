@@ -176,3 +176,5 @@ function displayArticleByID($article) {
     echo '<p>' . html_entity_decode($article['content']) . '</p>';
     echo '</article>';
 }
+
+
