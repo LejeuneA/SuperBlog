@@ -6,35 +6,35 @@
 /* ********************************************************************** */
 
 /**
-* Retourne le code html des boutons radios indiquant 
-* le status de publication de l'article
-* 
-* @param boolean     $published
-* @param string      $typeForm  (ADD ou EDIT)
-* @return string
-*/
+ * Retourne le code html des boutons radios indiquant 
+ * le status de publication de l'article
+ * 
+ * @param boolean     $published
+ * @param string      $typeForm  (ADD ou EDIT)
+ * @return string
+ */
 function displayFormRadioBtnArticlePublished($published, $typeForm = 'ADD')
 {
-   
+
     $html = '';
 
     // Si c'est le formulaire d'ajout d'article
-    if($typeForm == 'ADD'){
+    if ($typeForm == 'ADD') {
         $html .= '
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" value="1" id="published_article" name="published_article">          
         </div>
     ';
-    // Si c'est le formulaire de modification d'article
-    }elseif($typeForm == 'EDIT'){
+        // Si c'est le formulaire de modification d'article
+    } elseif ($typeForm == 'EDIT') {
 
-        if($published){        
+        if ($published) {
             $html .= '
             <div class="form-check form-switch">
                 <input class="form-check-input" value="1" type="checkbox" id="published_article" name="published_article" checked>          
             </div>
             ';
-        }else{
+        } else {
             $html .= '
             <div class="form-check form-switch">
                 <input class="form-check-input" value="1" type="checkbox" id="published_article" name="published_article">        
@@ -43,7 +43,7 @@ function displayFormRadioBtnArticlePublished($published, $typeForm = 'ADD')
         }
     }
 
-    echo $html; 
+    echo $html;
 }
 
 /**
@@ -57,11 +57,11 @@ function displayJSSection($tinyMCE = false)
     $js = '';
 
     // Chargement de TinyMCE si nécessaire (paramètre $tinyMCE = true)
-    $js .= ($tinyMCE)? '
+    $js .= ($tinyMCE) ? '
     <script src="vendors/tinymce/tinymce.min.js" referrerpolicy="origin"></script>  
     <script src="assets/js/conf-tinymce.js"> </script>
-    ' : null;  
-    
+    ' : null;
+
     // Affichage de la chaîne des scripts JS
     echo $js;
 }
@@ -72,7 +72,8 @@ function displayJSSection($tinyMCE = false)
  * @param string $title 
  * @return void 
  */
-function displayHeadSection($title = APP_NAME){
+function displayHeadSection($title = APP_NAME)
+{
 
     $head = '
         <meta charset="UTF-8">
@@ -93,11 +94,12 @@ function displayHeadSection($title = APP_NAME){
  * 
  * @return void 
  */
-function displayNavigation(){
+function displayNavigation()
+{
 
     $navigation = '';
 
-    if($_SESSION['IDENTIFY']){
+    if ($_SESSION['IDENTIFY']) {
         $navigation .= '
         <nav>
             <ul class="menu">
@@ -107,9 +109,9 @@ function displayNavigation(){
                 <li><a href="logoff.php" class="btn-danger">Déconnexion</a></li>                        
             </ul>           
         </nav>
-        <div class="welcome"> Bienvenue <span>'.$_SESSION['user_email'].'</span></div>
+        <div class="welcome"> Bienvenue <span>' . $_SESSION['user_email'] . '</span></div>
         ';
-    }else{
+    } else {
         $navigation .= '
         <nav>
             <ul class="menu">
@@ -131,7 +133,7 @@ function displayNavigation(){
  */
 function getMessage($message, $type = 'success')
 {
-    $html = '<div class="msg-'.$type.'">'.$message.'</div>';
+    $html = '<div class="msg-' . $type . '">' . $message . '</div>';
     return $html;
 }
 
@@ -142,9 +144,10 @@ function getMessage($message, $type = 'success')
  * @param mixed $articles 
  * @return void 
  */
-function displayArticles($articles) {
+function displayArticles($articles)
+{
     foreach ($articles as $article) {
-        echo '<article><a href="article.php?id='.$article['id'].'" title="Lire l\'article"><h2 class="article-item">' . $article['title'] . '</h2></a></article>';
+        echo '<article><a href="article.php?id=' . $article['id'] . '" title="Lire l\'article"><h2 class="article-item">' . $article['title'] . '</h2></a></article>';
         echo '<hr>';
     }
 }
@@ -159,8 +162,9 @@ function displayArticles($articles) {
  * @param string $app_author 
  * @return void 
  */
-function displayFooter($app_name = APP_NAME, $app_version = APP_VERSION, $app_update = APP_UPDATED, $app_author = APP_AUTHOR) {
-    echo"<p>$app_name - $app_version -$app_update by $app_author<p>";
+function displayFooter($app_name = APP_NAME, $app_version = APP_VERSION, $app_update = APP_UPDATED, $app_author = APP_AUTHOR)
+{
+    echo "<p>$app_name - $app_version -$app_update by $app_author<p>";
 }
 
 /**
@@ -169,7 +173,8 @@ function displayFooter($app_name = APP_NAME, $app_version = APP_VERSION, $app_up
  * @param mixed $article 
  * @return void 
  */
-function displayArticleByID($article) {
+function displayArticleByID($article)
+{
     echo '<article>';
     echo '<h2 class="">' . $article['title'] . '</h2>';
     echo '<hr>';
@@ -178,3 +183,26 @@ function displayArticleByID($article) {
 }
 
 
+/**
+ * Affiche les articles pour la page du manager
+ * 
+ * @param array $articles 
+ * @return string 
+ */
+function displayArticlesTitles($articles)
+{
+    $html = '';
+
+    if (!empty($articles)) {
+        foreach ($articles as $article) {
+            $html .= '
+                <div class="article">
+                    <h3>' . htmlspecialchars_decode($article['title']) . '</h3>
+                    
+                </div>
+            ';
+        }
+    }
+
+    return $html;
+}
