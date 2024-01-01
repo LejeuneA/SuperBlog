@@ -128,13 +128,57 @@ h1 {
     background: linear-gradient(0.30turn, rgb(136, 185, 235), rgb(15, 125, 235), rgb(136, 185, 235));
     border-radius: 7px;
     text-align: center;
-    max-width: 70%;    
+    max-width: 80%;    
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1rem;
     margin-top: 0.8rem;
     padding: 20px;
     box-shadow: 10px 5px 5px var(--shadow);
+}
+
+#main-menu {
+    display: block;  
+    margin: 0;
+    text-align: center;
+}
+
+#main-menu ul {        
+    list-style-type: none; 
+}
+
+#main-menu ul li {
+    display: inline;    
+    margin: 0 !important;   
+}
+
+#content, #content-edit, #content-add {
+    display: block;
+    width: 90%;
+    margin: auto;
+}
+
+#content-login {
+    display: block;
+    width: 55%;
+    margin: auto;
+}
+
+/* ***************************** */
+/*           IDs RULES           */
+/* ***************************** */
+
+#header-logo {
+    color: var(--menu-item-color);
+    border: 1px solid var(--menu-item-color);
+    background-color: var(--header-backg-color);
+    border-radius: 5px;
+    text-align: center;
+    max-width: 55%;    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    margin-top: 0.8rem;
 }
 
 #main-menu {
