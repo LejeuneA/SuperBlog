@@ -2,7 +2,7 @@
     // Constantes de l'application
     const APP_NAME = "SuperBlog";
     const APP_VERSION = 'v0.5.2';
-    const APP_UPDATED = '21-12-2023 16:30';
+    const APP_UPDATED = '01-01-2024 21:04';
     const APP_AUTHOR = 'Açelya Lejeune';
        
     // Constante d'activation/désactivation du mode DEBUG
@@ -40,6 +40,7 @@
 
     // Instancier un objet de connexion
     $conn = connectDB(SERVER_NAME, USER_NAME, USER_PWD, DB_NAME);
+
 
 
 
