@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         <div id="header-logo">
-            <h1><a href="index.php"><?php echo APP_NAME; ?></a></h1>
+        <h1><a href="index.php"><?= APP_NAME; ?></a></h1>
         </div>
         <div id="main-menu">
             <?php displayNavigation(); ?>
@@ -47,6 +47,6 @@
         <footer>                
             <?php displayFooter(); ?>
         </footer>             
-    </div>     
+    </div>    
 </body>
 </html>
