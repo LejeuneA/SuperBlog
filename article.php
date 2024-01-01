@@ -1,69 +1,61 @@
 <?php
-require_once('settings.php');
+    require_once('settings.php');
 
-/**
- * ICI VOUS ECRIVEZ LE CODE PHP QUI GERE LA LOGIQUE ET LES DONNEES DE l'APPLICATION
- */
+    $msg = null;
+    $result = null;
+    $execute = false;
 
-if (isset($_GET['id'])) {
-    // Get the article ID from the URL
-    $articleId = $_GET['id'];
+    // On vérifie si l'ID de l'article est passé en paramètre dans l'url ($_GET)
+    if(isset($_GET['id']) && !empty($_GET['id'])){
 
-    // Retrieve the article based on its ID
-    $article = getArticleByIDDB($conn, $articleId);
+        // On récupère l'ID de l'article passé en paramètre
+        $id = $_GET['id'];
 
-    // Check if the article exists
-    if ($article) {
-        // Set the page title to the article title
-        $pageTitle = $article['title'];
-    } else {
-        // If the article does not exist, set a default title
-        $pageTitle = 'L\'article n\'est pas trouvé';
-    }
-} else {
-    // If 'id' parameter is not set, set a default title
-    $pageTitle = 'L\'article n\'est pas trouvé';
-}
+        // On vérifie l'objet de connexion $conn
+        if(!is_object($conn)){            
+            $msg = getMessage($conn, 'error');
+        }else{
+            
+             // Récupérer l'article spécifié par l'ID
+            $result = getArticleByIDDB($conn, $id);
+
+            // On vérifie le retour de la fonction : si c'est un tableau, on continue, sinon on affiche un message d'erreur
+            (isset($result) && is_array($result) && !empty($result))? $execute = true : $msg = getMessage('Il n\'y a pas d\'article à afficher', 'error');
+        }       
+        
+    }else{
+        $msg = getMessage('Il n\'y a pas d\'article à afficher', 'success');
+    }    
+
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <?php displayHeadSection($pageTitle); ?>
+    <?php displayHeadSection((isset($result['title'])?$result['title']:APP_NAME)); ?>
 </head>
-
 <body>
     <div class="container">
-        <?php echo displayHeaderLogo(); ?>
-    </div>
-    <div id="main-menu">
-        <?php displayNavigation(); ?>
-    </div>
-
-    <div id="message">
-        <?php
-        // Check if the article exists
-        if ($article) {
-            // Display the article title and content
-            echo "<h2>{$article['title']}</h2>";
-            echo "<p>{$article['content']}</p>";
-        } else {
-            // Display a message if the article does not exist
-            echo "<p>Il n'y a pas d'article à afficher.</p>";
-        }
-        ?>
-    </div>
-    <div id="content">
-        <?php echo getArticleByIDDB($conn, $id); ?>
-    </div>
-    <footer>
-        <?php echo displayFooterSection(); ?>
-    </footer>
-    </div>
-    </div>
+        <div id="header-logo">
+            <h1><?php echo APP_NAME; ?></h1>
+        </div>
+        <div id="main-menu">
+            <?php displayNavigation(); ?>
+        </div>            
+        <div id="message">              
+            <?php if(isset($msg)) echo $msg; ?>
+        </div>
+        <div id="content">
+            
+            <?php 
+                // Peut-on exécuter l'affichage de l'article
+                if($execute)
+                    displayArticleByID($result); 
+            ?>
+                            
+        </div>  
+        <footer>
+            <?php displayFooter(); ?>
+        </footer>            
+    </div>    
 </body>
-
 </html>
