@@ -287,5 +287,3 @@ function userIdentificationWithHashPwdDB($conn, $datas) {
         return $st;      
     }       
 }
-
-
