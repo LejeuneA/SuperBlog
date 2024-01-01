@@ -1,5 +1,4 @@
 <?php
-
 /* ********************************************************************** */
 /* *                          TOOLS FUNCTIONS                           * */
 /* *                          ---------------                           * */
@@ -11,6 +10,7 @@
 * le status de publication de l'article
 * 
 * @param boolean     $published
+* @param string      $typeForm  (ADD ou EDIT)
 * @return string
 */
 function displayFormRadioBtnArticlePublished($published, $typeForm = 'ADD')
@@ -46,9 +46,47 @@ function displayFormRadioBtnArticlePublished($published, $typeForm = 'ADD')
     echo $html; 
 }
 
+/**
+ * Affichage de la section JS
+ * 
+ * @param bool $tinyMCE 
+ * @return void 
+ */
+function displayJSSection($tinyMCE = false)
+{
+    $js = '';
 
-// Fonctions qui sont liées à l'interface utilisateur
+    // Chargement de TinyMCE si nécessaire (paramètre $tinyMCE = true)
+    $js .= ($tinyMCE)? '
+    <script src="vendors/tinymce/tinymce.min.js" referrerpolicy="origin"></script>  
+    <script src="assets/js/conf-tinymce.js"> </script>
+    ' : null;  
+    
+    // Affichage de la chaîne des scripts JS
+    echo $js;
+}
 
+/**
+ * Affichage de la section head d'une page
+ * 
+ * @param string $title 
+ * @return void 
+ */
+function displayHeadSection($title = APP_NAME){
+
+    $head = '
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <link rel="icon" type="image/png" href="assets/img/favicon.png">
+        <link rel="preconnect" href="https://fonts.gstatic.com">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css" integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+        <link rel="stylesheet" href="assets/css/styles.css">
+        
+        <title>' . $title . '</title>
+    ';
+
+    echo $head;
+}
 
 /**
  * Affichage de la navigation
@@ -67,16 +105,15 @@ function displayNavigation(){
                 <li><a href="manager.php">Gérer</a></li>
                 <li><a href="add.php">Ajouter</a></li>
                 <li><a href="logoff.php" class="btn-danger">Déconnexion</a></li>                        
-            </ul>
-            <div class="welcome"> Bienvenue <span>'.$_SESSION['user_email'].'</span></div>
-        <nav>';
+            </ul>           
+        </nav>
+        <div class="welcome"> Bienvenue <span>'.$_SESSION['user_email'].'</span></div>
+        ';
     }else{
         $navigation .= '
         <nav>
             <ul class="menu">
-                <li><a href="index.php">Home</a></li>
-                <!--<li><a href="manager.php">Gérer</a></li>
-                <li><a href="add.php">Ajouter</a></li>-->
+                <li><a href="index.php">Home</a></li>                  
                 <li><a href="login.php">Se connecter</a></li>                        
             </ul>
         <nav>';
@@ -84,60 +121,6 @@ function displayNavigation(){
 
     echo $navigation;
 }
-
-
-/**
- * Affichage de la section head d'une page
- * 
- * @param string $title 
- * @return void 
- */
-function displayHeadSection($title = '')
-{
-
-    $head = '
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <link rel="icon" type="image/png" href="assets/img/favicon.png">
-        <link rel="preconnect" href="https://fonts.gstatic.com">   
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css" integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
-        <link rel="stylesheet" href="assets/css/styles.css">
-        
-        <title>' . $title . '</title>
-    ';
-
-    echo $head;
-}
-
-/**
- * 
- * Affichage des articles publiés.
- * 
- * 
- */
-function displayHeaderLogo() {
-    echo '<div id="header-logo">
-            <h1><a href="index.php" title="Aller sur la page d\'accueil du Blog">' . APP_NAME . '</a></h1>
-          </div>';
-}
-
-/**
- * 
- * Affichage des articles publiés.
- * 
- * 
- */
-function displayArticlesPublies($res) {
-
-    echo "<ul>";
-
-    foreach ($res as $article) {
-        echo "<li><a href='article.php?id={$article['id']}' title='Lire'>{$article['title']}</a></li>";
-    }
-
-    echo "</ul>";
-}
-
 
 /**
  * Retour d'un message au format HTML
@@ -154,17 +137,42 @@ function getMessage($message, $type = 'success')
 
 
 /**
+ * Affichage des articles 
  * 
- * Affichage du footer de page
- * 
- * @param string $footer
+ * @param mixed $articles 
+ * @return void 
  */
+function displayArticles($articles) {
+    foreach ($articles as $article) {
+        echo '<article><a href="article.php?id='.$article['id'].'" title="Lire l\'article"><h2 class="article-item">' . $article['title'] . '</h2></a></article>';
+        echo '<hr>';
+    }
+}
 
-function displayFooterSection()
-{
-    $footer = '
-        <p>SuperBlog - v0.0.1 - 14-12-2023 16:15 by Açelya Lejeune<p>
-    ';
 
-    echo $footer;
+/**
+ * Affichage du footer
+ * 
+ * @param string $app_name 
+ * @param string $app_version 
+ * @param string $app_update 
+ * @param string $app_author 
+ * @return void 
+ */
+function displayFooter($app_name = APP_NAME, $app_version = APP_VERSION, $app_update = APP_UPDATED, $app_author = APP_AUTHOR) {
+    echo"<p>$app_name - $app_version -$app_update by $app_author<p>";
+}
+
+/**
+ * Affiche l'article reçu en paramètre
+ * 
+ * @param mixed $article 
+ * @return void 
+ */
+function displayArticleByID($article) {
+    echo '<article>';
+    echo '<h2 class="">' . $article['title'] . '</h2>';
+    echo '<hr>';
+    echo '<p>' . html_entity_decode($article['content']) . '</p>';
+    echo '</article>';
 }
