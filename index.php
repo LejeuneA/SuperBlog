@@ -47,6 +47,6 @@
         <footer>                
             <?php displayFooter(); ?>
         </footer>             
-    </div>    
+    </div>     
 </body>
 </html>
