@@ -189,20 +189,19 @@ function displayArticleByID($article)
  * @param array $articles 
  * @return string 
  */
-function displayArticlesTitles($articles)
+
+function displayArticlesWithButtons($articles)
 {
-    $html = '';
+    foreach ($articles as $article) {
+        // Display Article Content
+        echo '<div class="article">';
+        echo '<h3>' . htmlspecialchars_decode($article['title']) . '</h3>';
+        echo '</div>';
 
-    if (!empty($articles)) {
-        foreach ($articles as $article) {
-            $html .= '
-                <div class="article">
-                    <h3>' . htmlspecialchars_decode($article['title']) . '</h3>
-                    
-                </div>
-            ';
-        }
+        echo '
+            <button onclick="modifierArticle(' . $article['id'] . ')">Modifier</button>
+            <button onclick="afficherArticle(' . $article['id'] . ')">Afficher</button>
+            <button onclick="supprimerArticle(' . $article['id'] . ')">Supprimer</button>
+        ';
     }
-
-    return $html;
 }
