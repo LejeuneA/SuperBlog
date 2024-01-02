@@ -69,7 +69,7 @@
                     <textarea class="" id="content" name="content" rows="8"></textarea>
                 </div>
                 <input type="hidden" id="form" name="form" value="add">
-                <button type="submit" class="btn-classic">Ajouter</button>
+                <button type="submit" class="btn-manager">Ajouter</button>
             </form>
                             
         </div>  
