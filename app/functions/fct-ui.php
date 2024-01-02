@@ -15,36 +15,38 @@
  */
 function displayFormRadioBtnArticlePublished($published, $typeForm = 'ADD')
 {
-
     $html = '';
 
     // Si c'est le formulaire d'ajout d'article
     if ($typeForm == 'ADD') {
         $html .= '
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" value="1" id="published_article" name="published_article">          
-        </div>
-    ';
-        // Si c'est le formulaire de modification d'article
+            <div class="form-check form-switch custom-checkbox">
+                <input class="form-check-input" type="checkbox" value="1" id="published_article" name="published_article">          
+                <label class="form-check-label" for="published_article"></label>
+            </div>
+        ';
     } elseif ($typeForm == 'EDIT') {
-
+        // Si c'est le formulaire de modification d'article
         if ($published) {
             $html .= '
-            <div class="form-check form-switch">
-                <input class="form-check-input" value="1" type="checkbox" id="published_article" name="published_article" checked>          
-            </div>
+                <div class="form-check form-switch custom-checkbox">
+                    <input class="form-check-input" value="1" type="checkbox" id="published_article" name="published_article" checked>          
+                    <label class="form-check-label" for="published_article">Publié</label>
+                </div>
             ';
         } else {
             $html .= '
-            <div class="form-check form-switch">
-                <input class="form-check-input" value="1" type="checkbox" id="published_article" name="published_article">        
-            </div>
+                <div class="form-check form-switch custom-checkbox">
+                    <input class="form-check-input" value="1" type="checkbox" id="published_article" name="published_article">        
+                    <label class="form-check-label" for="published_article">Non publié</label>
+                </div>
             ';
         }
     }
 
     echo $html;
 }
+
 
 /**
  * Affichage de la section JS
@@ -176,7 +178,7 @@ function displayFooter($app_name = APP_NAME, $app_version = APP_VERSION, $app_up
 function displayArticleByID($article)
 {
     echo '<article>';
-    echo '<h2 class="">' . $article['title'] . '</h2>';
+    echo '<h2 class="article-title">' . $article['title'] . '</h2>';
     echo '<hr>';
     echo '<p>' . html_entity_decode($article['content']) . '</p>';
     echo '</article>';
@@ -190,19 +192,26 @@ function displayArticleByID($article)
  * @return string 
  */
 
-function displayArticlesWithButtons($articles)
+ function displayArticlesWithButtons($articles)
 {
     foreach ($articles as $article) {
         // Display Article Content
         echo '<div class="article">';
+        
+        // Display circle based on article status
+        $circleClass = ($article['active']) ? 'circle-published' : 'circle-not-published';
+        echo '<div class="circle ' . $circleClass . '"></div>';
+        
         echo '<h3>' . htmlspecialchars_decode($article['title']) . '</h3>';
         echo '</div>';
-
-        echo '
-            <button onclick="modifierArticle(' . $article['id'] . ')">Modifier</button>
-            <button onclick="afficherArticle(' . $article['id'] . ')">Afficher</button>
-            <button onclick="supprimerArticle(' . $article['id'] . ')">Supprimer</button>
-        ';
+        
+        // Display buttons
+        echo '<div class="buttons">';
+        echo '<button class="btn-manager" onclick="modifierArticle(' . $article['id'] . ')">Modifier</button>';
+        echo '<button class="btn-manager" onclick="afficherArticle(' . $article['id'] . ')">Afficher</button>';
+        echo '<button class="btn-manager-delete" onclick="supprimerArticle(' . $article['id'] . ')">Supprimer</button>';
+        echo '</div>';
+        
         echo '<hr>';
     }
 }
