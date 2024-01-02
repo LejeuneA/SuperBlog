@@ -1,7 +1,7 @@
 <?php
 require_once('settings.php');
 
-// Redirection vers la page de login si l'utilisateur n'est pas connecté
+
 if (!isset($_SESSION['IDENTIFY']) || !$_SESSION['IDENTIFY']) {
     header('Location: login.php');
     exit();
@@ -11,25 +11,25 @@ $msg = null;
 $result = null;
 $execute = false;
 
-// On vérifie l'objet de connexion $conn
+
 if (!is_object($conn)) {
     $msg = getMessage($conn, 'error');
 } else {
-    // Récupérer tous les articles de la table articles et les stocker dans un tableau nommé $result
+
     $result = getAllArticlesDB($conn);
 
-    // On vérifie le retour de la fonction : si c'est un tableau, on continue, sinon on affiche le message d'erreur
+
     if (is_array($result) && !empty($result)) {
         $execute = true;
 
-        // Check if the form is submitted for deletion
+
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $articleIdToDelete = $_GET['id'];
 
-            // Use the deleteArticleDB function to delete the article
+
             $deleteResult = deleteArticleDB($conn, $articleIdToDelete);
 
-            // Check the result of the deletion
+
             if ($deleteResult === true) {
                 $msg = getMessage('Article supprimé avec succès.', 'success');
             } else {
@@ -90,7 +90,7 @@ if (!is_object($conn)) {
 
         function supprimerArticle(articleId) {
             if (confirm('Êtes-vous certain de vouloir supprimer l\'article ci-dessous ?')) {
-                window.location.href = 'manager.php?id=' + articleId; // Redirect to manager.php with the article ID
+                window.location.href = 'manager.php?id=' + articleId; 
             }
         }
     </script>
