@@ -67,7 +67,7 @@
             <?php displayNavigation(); ?>
         </div>
         <div id="content-edit">
-            <?php echo $msg; ?>
+            <?php echo $msg; // Affiche le message de succès ou d'erreur ?>
 
             <form action="edit.php?id=<?php echo $article['id']; ?>" method="post">     
                 <input type="hidden" name="id" value="<?php echo $article['id']; ?>">               
@@ -84,7 +84,7 @@
                     <textarea class="" id="content" name="content" rows="5"><?php echo $article['content']; ?></textarea>
                 </div>
                 <input type="hidden" id="form" name="form" value="update">
-                <button type="submit" class="btn-classic">Modifier</button>
+                <button type="submit" class="btn-manager">Modifier</button>
             </form> 
         </div>  
         <footer>
