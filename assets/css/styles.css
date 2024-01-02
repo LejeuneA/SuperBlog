@@ -2,16 +2,17 @@
 
 :root {
     --body-backg-color: rgb(246, 254, 255);
-    --menu-item-color: rgb(15, 125, 235);
-    --menu-item-hover: rgb(40, 118, 196);
-    --menu-item-light: rgb(136, 185, 235);
+    --menu-item-color: rgb(0, 91, 65);
+    --menu-item-color-light:rgb(158, 200, 185);
+    --menu-item-hover: rgb(233, 184, 36);
     --h1-title-app: rgb(6, 136, 223);
+    --content-tittle-color:rgb(0, 129, 112);
     --danger-color: rgb(217, 12, 12);
     --backg-msg-danger-color: rgb(255, 208, 208);
     --success-color: rgb(39, 156, 18);
     --backg-msg-success-color: rgb(222, 254, 180);
     --danger-color-hover: rgb(147, 13, 13);
-    --link-color: rgb(1, 125, 248);
+    --link-color: rgb(255, 115, 29);
     --published-color: rgb(74, 192, 41);
     --border-width: 1px;
 }
@@ -34,7 +35,8 @@ body {
 footer {
     margin-top: 3rem;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    color: var(--link-color);
 }
 
 h1 {
@@ -57,8 +59,8 @@ article a {
 
 hr {
     margin: 1rem 0;
-    border: var(--border-width) solid var(--menu-item-color);
-    opacity: .50;
+    border: var(--border-width) solid var(--menu-item-color-light);
+    /* opacity: .70; */
 }
 
 
@@ -73,7 +75,7 @@ hr {
     color: var(--menu-item-color);
     border: 1px solid var(--menu-item-color);
     background-color: var(--header-backg-color);
-    background: linear-gradient(0.30turn, var(--menu-item-light), var(--menu-item-color), var(--menu-item-light));
+    background: linear-gradient(0.30turn, var(--menu-item-hover), var(--content-tittle-color), var(--menu-item-hover));
     border-radius: 7px;
     text-align: center;
     max-width: 80%;
@@ -110,15 +112,15 @@ hr {
     margin: 0 !important;
 }
 
-#content h2, #content a {
+#content h2{
     font-weight: 500;
-    color: var(--menu-item-color);
+    color: var(--content-tittle-color);
     text-decoration: none;
     font-size: 2rem;
 }
 
-#content a:hover {
-    color:var(--menu-item-light);
+#content h2:hover{
+    color: white;
 }
 
 #content, #content-edit, #content-add {
@@ -140,6 +142,15 @@ hr {
     margin: 1rem;
 }
 
+.article-item {
+    padding: 10px;  
+}
+
+.article-item:hover {
+    background-color: var(--menu-item-hover);
+    border-radius: 5px; 
+}
+
 .menu {
     list-style-type: none;
     padding-left: 0;
@@ -158,10 +169,132 @@ hr {
 .menu a:hover {
     color: var(--menu-item-hover);
     border: 1px solid var(--menu-item-hover);
-    background-color: var(--menu-item-color);
+    background-color: var(--menu-item-hover);
     color: var(--body-backg-color);
     font-weight: 500;
 }
+
+.btn-classic {
+    font-size: 1.2rem;
+    color: var(--menu-item-color);
+    border: 1px solid var(--menu-item-color);
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 10px;    
+    font-weight: bold;
+}
+
+.btn-classic:hover {
+    background-color: var(--menu-item-hover);
+    color: var(--body-backg-color);
+    border: 1px solid var(--menu-item-hover);
+}
+
+.btn-mini {
+    font-size: 0.7rem;
+    background-color: var(--menu-item-color);
+    color: var(--body-backg-color);
+    border: 1px solid var(--menu-item-color);
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 10px;    
+    font-weight: bold;
+}
+
+.btn-mini:hover {
+    background-color: var(--menu-item-hover);
+    color: var(--body-backg-color);
+    border: 1px solid var(--menu-item-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger-color)!important;
+    color: var(--body-backg-color) !important;
+    border: 1px solid var(--danger-color)!important;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-color-hover)!important;
+    color: var(--body-backg-color)!important;
+    border: 1px solid var(--danger-color-hover)!important;
+}
+
+a.btn-disconnect {
+    background-color: var(--menu-item-hover);
+    border: 1px solid var(--menu-item-color); 
+}
+
+a.btn-disconnect:hover{
+    background-color: var(--menu-item-color); 
+    border: 1px solid var(--menu-item-color); 
+}
+
+.msg-success {
+    margin: auto;
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    color: var(--success-color);
+    background-color: var(--backg-msg-success-color);
+    border: 1px solid var(--success-color);
+    border-radius: 5px;
+    width: 80%;
+}
+
+.msg-error {
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    color: var(--danger-color);
+    background-color: var(--backg-msg-danger-color);
+    border: 1px solid var(--danger-color);
+    border-radius: 5px;
+    width: 80%;
+}
+
+
+.circle-published {
+    display: inline-block;
+    background: var(--published-color);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    shape-outside: circle();
+    clip-path: circle();  
+    border: 1px solid black;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.circle-not-published {
+    display: inline-block;
+    background: var(--danger-color);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;  
+    shape-outside: circle();
+    clip-path: circle();
+    border: 1px solid black;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.mt-15 {
+    margin-top: 1.5rem;
+}
+
+.welcome {
+    text-align: center;
+    font-size: .750rem;
+    margin-bottom: 1rem;
+}
+
+.welcome > span {
+    color: var(--link-color);
+}
+
 
 /* Classes End */
 
