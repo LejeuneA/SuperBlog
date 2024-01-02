@@ -21,6 +21,21 @@ if (!is_object($conn)) {
     // On vérifie le retour de la fonction : si c'est un tableau, on continue, sinon on affiche le message d'erreur
     if (is_array($result) && !empty($result)) {
         $execute = true;
+
+        // Check if the form is submitted for deletion
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $articleIdToDelete = $_GET['id'];
+
+            // Use the deleteArticleDB function to delete the article
+            $deleteResult = deleteArticleDB($conn, $articleIdToDelete);
+
+            // Check the result of the deletion
+            if ($deleteResult === true) {
+                $msg = getMessage('Article supprimé avec succès.', 'success');
+            } else {
+                $msg = getMessage('Erreur lors de la suppression de l\'article. ' . $deleteResult, 'error');
+            }
+        }
     } else {
         $msg = getMessage('Il n\'y a pas d\'article à afficher actuellement', 'error');
     }
@@ -75,7 +90,7 @@ if (!is_object($conn)) {
 
         function supprimerArticle(articleId) {
             if (confirm('Êtes-vous certain de vouloir supprimer l\'article ci-dessous ?')) {
-                window.location.href = 'delete.php?id=' + articleId;
+                window.location.href = 'manager.php?id=' + articleId; // Redirect to manager.php with the article ID
             }
         }
     </script>
