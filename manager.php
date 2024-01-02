@@ -49,43 +49,32 @@ if (!is_object($conn)) {
         <div id="message">
             <?= isset($msg) ? $msg : ''; ?>
         </div>
+
         <div id="content">
             <?php
             if ($execute) {
-                foreach ($result as $article) {
-            ?>
-                    <div class="article">
-                        <h3><?= htmlspecialchars_decode($article['title']); ?></h3>
-                        <button onclick="modifierArticle(<?= $article['id']; ?>)">Modifier</button>
-                        <button onclick="afficherArticle(<?= $article['id']; ?>)">Afficher</button>
-                        <button onclick="supprimerArticle(<?= $article['id']; ?>)">Supprimer</button>
-                    </div>
-            <?php
-                }
+                displayArticlesWithButtons($result);
             }
             ?>
         </div>
-        <footer>
-            <?php displayFooter(); ?>
-        </footer>
+
     </div>
+    <footer>
+        <?php displayFooter(); ?>
+    </footer>
+    </div>
+    
     <script>
         function modifierArticle(articleId) {
-            // Burada "Modifier" düğmesine tıklanınca yapılacak işlemleri tanımlayabilirsiniz
-            // Örneğin, bir düzenleme formunu açabilirsiniz.
             window.location.href = 'edit.php?id=' + articleId;
         }
 
         function afficherArticle(articleId) {
-            // Burada "Afficher" düğmesine tıklanınca yapılacak işlemleri tanımlayabilirsiniz
-            // Örneğin, bir ayrıntı sayfasına yönlendirebilirsiniz.
             window.location.href = 'article.php?id=' + articleId;
         }
 
         function supprimerArticle(articleId) {
-            // Burada "Supprimer" düğmesine tıklanınca yapılacak işlemleri tanımlayabilirsiniz
-            // Örneğin, bir onay kutusu gösterebilir ve ardından makaleyi silebilirsiniz.
-            if (confirm('Bu makaleyi silmek istediğinizden emin misiniz?')) {
+            if (confirm('Êtes-vous certain de vouloir supprimer l\'article ci-dessous ?')) {
                 window.location.href = 'delete.php?id=' + articleId;
             }
         }
