@@ -69,7 +69,7 @@
                     <input type="password" class="form-ctrl" id="pwd" name="pwd" value="" required>
                 </div>
                 <input type="hidden" id="form" name="form" value="login">
-                <button type="submit" class="btn-classic">Se connecter</button>
+                <button type="submit" class="btn-manager">Se connecter</button>
             </form>
                             
         </div>  
