@@ -54,7 +54,6 @@ h2.title {
 
 article a {
     text-decoration: none;
-    color: var(--menu-item-color);
 }
 
 hr {
@@ -235,7 +234,7 @@ a.btn-disconnect:hover, .btn-manager-delete:hover{
 }
 
 .msg-success {
-    margin: auto;
+    margin: 20px auto ;
     padding: 1.5rem;
     font-size: 1.3rem;
     text-align: center;
@@ -247,7 +246,7 @@ a.btn-disconnect:hover, .btn-manager-delete:hover{
 }
 
 .msg-error {
-    margin: auto;
+    margin: 20px auto;
     margin-bottom: 1rem;
     padding: 1.5rem;
     font-size: 1.3rem;
