@@ -106,7 +106,7 @@ function displayNavigation()
                 <li><a href="index.php">Home</a></li>
                 <li><a href="manager.php">Gérer</a></li>
                 <li><a href="add.php">Ajouter</a></li>
-                <li><a href="logoff.php" class="btn-danger">Déconnexion</a></li>                        
+                <li><a href="logoff.php" class="btn-disconnect">Déconnexion</a></li>                        
             </ul>           
         </nav>
         <div class="welcome"> Bienvenue <span>' . $_SESSION['user_email'] . '</span></div>
@@ -203,5 +203,6 @@ function displayArticlesWithButtons($articles)
             <button onclick="afficherArticle(' . $article['id'] . ')">Afficher</button>
             <button onclick="supprimerArticle(' . $article['id'] . ')">Supprimer</button>
         ';
+        echo '<hr>';
     }
 }
