@@ -39,7 +39,6 @@
         </div>
         <div id="content">
             <?php               
-                // Peut-on exécuter l'affichage des articles
                 if($execute)
                     displayArticles($result);
             ?>           
