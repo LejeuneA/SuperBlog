@@ -63,7 +63,7 @@ if (!is_object($conn)) {
         <?php displayFooter(); ?>
     </footer>
     </div>
-    
+
     <script>
         function modifierArticle(articleId) {
             window.location.href = 'edit.php?id=' + articleId;
