@@ -52,6 +52,12 @@ h2.title {
     margin-bottom: 2rem;
 }
 
+h3 {
+    font-size: 2rem;
+    font-weight: 200;
+    color: var(--menu-item-color);
+}
+
 article a {
     text-decoration: none;
 }
