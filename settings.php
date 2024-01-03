@@ -1,7 +1,7 @@
 <?php
     // Constantes de l'application
-    const APP_NAME = "SuperBlog LPB";
-    const APP_VERSION = 'v0.5.2';
+    const APP_NAME = "SuperBlog";
+    const APP_VERSION = 'v0.7.2';
     const APP_UPDATED = '03-01-2024 08:30';
     const APP_AUTHOR = 'Açelya Lejeune';
        
