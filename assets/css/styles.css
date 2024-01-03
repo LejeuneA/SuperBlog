@@ -78,15 +78,11 @@ hr {
 #header-logo {
     color: var(--menu-item-color);
     border: 1px solid var(--menu-item-color);
-    background-color: var(--header-backg-color);
     background: linear-gradient(0.30turn, var(--menu-item-hover), var(--content-tittle-color), var(--menu-item-hover));
     border-radius: 7px;
     text-align: center;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1rem;
-    margin-top: 0.8rem;
+    max-width: 90%;
+    margin: 1rem auto 0.8rem;
     padding: 20px;
     box-shadow: 10px 5px 5px var(--shadow);
 }
